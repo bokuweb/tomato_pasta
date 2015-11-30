@@ -1,5 +1,5 @@
 {
-  "name": "electron-quick-start",
+  "name": "pasta",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
@@ -20,20 +20,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atom/electron-quick-start.git"
+    "url": "https://github.com/bokuweb/tomato_pasta"
   },
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial"
+    "Hatena"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "bokuweb",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/atom/electron-quick-start/issues"
+    "url": "https://github.com/bokuweb/tomato_pasta/issues"
   },
-  "homepage": "https://github.com/atom/electron-quick-start#readme",
+  "homepage": "https://github.com/bokuweb/tomato_pasta",
   "devDependencies": {
     "babel-plugin-espower": "1.0.0",
     "babel-polyfill": "^6.2.0",
@@ -52,6 +50,7 @@
     "watchify": "3.5.0"
   },
   "dependencies": {
+    "electron-prebuilt": "^0.35.2",
     "dexie": "^1.2.0",
     "jsonp": "~0.2.0",
     "lodash": "^3.10.1",
