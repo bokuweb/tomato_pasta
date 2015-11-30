@@ -5,12 +5,18 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "build" : "npm run build:js & npm run build:stylus",
+    "package": "electron-packager . pasta --arch=x64 --out=packages --platform=darwin,linux,win32 --version=0.35.2 --ignore={packages,screenshots,node_modules,test,stylus,src}/* --overwrite --icon=pasta.icns",
+    "build": "npm run build:js & npm run build:stylus",
     "build:js": "browserify --extension=js -o dist/bundle.js src/index.js",
     "watch": "npm run watch:js & npm run watch:stylus",
     "watch:js": "watchify --extension=js -o dist/bundle.js src/index.js",
     "watch:stylus": "stylus stylus/ --watch  --out stylesheets/",
-    "build:stylus": "stylus stylus/ --out stylesheets/"
+    "build:stylus": "stylus stylus/ --out stylesheets/",
+    "zip": "npm run zip-darwin && npm run zip-win32 && npm run zip-linux",
+    "release": "npm run package && npm run zip",
+    "zip-darwin": "cd packages && zip -r pasta-darwin-x64.zip pasta-darwin-x64",
+    "zip-win32": "cd packages && zip -r pasta-win32-x64.zip pasta-win32-x64",
+    "zip-linux": "cd packages && zip -r pasta-linux-x64.zip pasta-linux-x64"
   },
   "repository": {
     "type": "git",
@@ -29,11 +35,12 @@
   },
   "homepage": "https://github.com/atom/electron-quick-start#readme",
   "devDependencies": {
-    "electron-prebuilt": "^0.35.0",
     "babel-plugin-espower": "1.0.0",
     "babel-polyfill": "^6.2.0",
     "babelify": "6.4.0",
     "browserify": "^12.0.1",
+    "electron-packager": "^5.1.1",
+    "electron-prebuilt": "^0.35.2",
     "espower-babel": "3.3.0",
     "espower-loader": "1.0.0",
     "espowerify": "1.0.0",
