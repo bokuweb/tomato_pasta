@@ -148,7 +148,7 @@ function _fetchFeed(dispatch, keyword, page = 0, threshold) {
 
 function _fetchSearchFeed(dispatch, keyword, page = 0, threshold) {
   const url = HATENA_SEARCH_URL + keyword + '&of=' + page * 40 + '&users=' + threshold;
-  fetch(GOOGLEAPI_URI + encodeURIComponent(url)).then((feed) => {
+  fetch(url).then((feed) => {
     const items = getItems(feed);
     dispatch(recieveItems(items, keyword, items.length));
   }, (error) => console.log(error));
@@ -157,7 +157,7 @@ function _fetchSearchFeed(dispatch, keyword, page = 0, threshold) {
 
 function _fetchUserFeed(dispatch, keyword, user, page = 0, threshold) {
   const url = HATENA_URL + user + '/rss?of=' + page * 20;
-  fetch(GOOGLEAPI_URI + encodeURIComponent(url)).then((feed) => {
+  fetch(url).then((feed) => {
     const items = getItems(feed);
     _getBookmarkCount(items).then((bookmarks) => {
       const filteredItems = _.filter(items, (item) => bookmarks[item.link] >= threshold);
