@@ -1,30 +1,24 @@
-# electron-quick-start
+# ![TunaPasta](https://github.com/bokuweb/tuna_pasta/blob/master/docs/logo.png?raw=true)
 
-**Clone and run for a quick way to see an Electron in action.**
+[![Build Status](https://travis-ci.org/bokuweb/tuna_pasta.svg?branch=master)](https://travis-ci.org/bokuweb/tuna_pasta)
+[![Code Climate](https://codeclimate.com/github/bokuweb/tuna_pasta/badges/gpa.svg)](https://codeclimate.com/github/bokuweb/tuna_pasta)
+![License](http://img.shields.io/npm/l/object.assign.svg)
 
-This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start) within the Electron documentation.
 
-A basic Electron application needs just these files:
+Pasta is Hatena Bookmark Viwer, build with React/Redux, focused on keyword.
 
-- `index.html` - A web page to render.
-- `main.js` - Starts the app and creates a browser window to render HTML.
-- `package.json` - Points to the app's main file and lists its details and dependencies.
 
-You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start).
+![screenshot](https://github.com/bokuweb/tuna_pasta/blob/master/docs/screenshot.png?raw=true)
 
-## To Use
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+## License
 
-```bash
-# Clone this repository
-$ git clone https://github.com/atom/electron-quick-start
-# Go into the repository
-$ cd electron-quick-start
-# Install dependencies and run the app
-$ npm install && npm start
-```
+The MIT License (MIT)
 
-Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).
+Copyright (c) 2015 @Bokuweb
 
-#### License [CC0 (Public Domain)](LICENSE.md)
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
