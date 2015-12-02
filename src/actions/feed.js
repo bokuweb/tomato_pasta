@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {fetch, fetchWithGoogleFeedApi} from '../api/feed'
+import {fetch, fetchRSS} from '../api/feed'
 import * as types from '../constants/action-types';
 import DbManager from '../lib/db'
 
@@ -7,16 +7,16 @@ const HATENA_URL = 'http://b.hatena.ne.jp/'
 const HATENA_BOOKMARK_COUNT_URL = 'http://api.b.st-hatena.com/entry.counts?';
 const HATENA_SEARCH_URL = HATENA_URL + 'search/text?mode=rss&safe=off&q='
 const HATENA_ENTRY_URL = HATENA_URL + 'entry/json/?'
-const GOOGLEAPI_URI = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=-1&q=';
+//const GOOGLEAPI_URI = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=-1&q=';
 
 const db = new DbManager('pastaDB');
 
 function getItems(feed) {
     console.log('---------- fetch feed -----------');
     console.dir(feed);
-    if (feed.responseData === null)  return;
-    if (feed.responseData.feed === undefined) return [];
-    return feed.responseData.feed.entries;
+    if (feed.length === 0)  return;
+    //if (feed.responseData.feed === undefined) return [];
+    return feed;
 }
 
 export function initialize() {
@@ -92,6 +92,7 @@ export function fetchFeed(feed, menu) {
 export function addFavorite(item, threshold) {
   return dispatch => {
     item.isFavorited = true;
+
     db.put('favorites', item).then(() => {
       db.getArray('favorites').then((favorites) => {
         _getBookmarkCount(favorites).then((bookmarks) => {
@@ -148,7 +149,7 @@ function _fetchFeed(dispatch, keyword, page = 0, threshold) {
 
 function _fetchSearchFeed(dispatch, keyword, page = 0, threshold) {
   const url = HATENA_SEARCH_URL + keyword + '&of=' + page * 40 + '&users=' + threshold;
-  fetch(GOOGLEAPI_URI + encodeURIComponent(url)).then((feed) => {
+  fetchRSS(url).then((feed) => {
     const items = getItems(feed);
     dispatch(recieveItems(items, keyword, items.length));
   }, (error) => console.log(error));
@@ -157,7 +158,7 @@ function _fetchSearchFeed(dispatch, keyword, page = 0, threshold) {
 
 function _fetchUserFeed(dispatch, keyword, user, page = 0, threshold) {
   const url = HATENA_URL + user + '/rss?of=' + page * 20;
-  fetch(GOOGLEAPI_URI + encodeURIComponent(url)).then((feed) => {
+  fetchRSS(url).then((feed) => {
     const items = getItems(feed);
     _getBookmarkCount(items).then((bookmarks) => {
       const filteredItems = _.filter(items, (item) => bookmarks[item.link] >= threshold);
